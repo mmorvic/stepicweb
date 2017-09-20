@@ -1,0 +1,1 @@
+gunicorn -c ~/box/web/etc/hello.py hello:app
