@@ -10,6 +10,8 @@ working_dir = '~/box/web/ask'
 workers = number_of_workers()
 loglevel = "debug"
 application = 'ask.wsgi:application'
+errorlog = '/var/log/gunicorn/gunicorn-error.log'
+# daemon = True
 
 # CONFIG = {
 #   'mode': 'wsgi',
