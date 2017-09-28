@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
     def new(self):
-        return self.order_by('-added_at')
+        return self.order_by('-id')
 
     def popular(self):
         return self.order_by('-rating')
@@ -19,7 +19,7 @@ class Question(models.Model):
     likes = models.ManyToManyField(User, related_name="q_to_likes")
     objects = QuestionManager()
 
-    def __str__(self):
+    def __unicode__(self):
         return self.title
 
     def get_url(self):
@@ -32,7 +32,7 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, null=True, on_delete=models.SET_NULL)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.text
 
 
