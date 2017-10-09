@@ -36,5 +36,33 @@ class Answer(models.Model):
         return self.text
 
 
+class NavBar:
+    def __init__(self, active, typenav):
+        self.active = active
+        self.typenav = typenav  # False - login, True - logout
+        self.data = ['navbar-nav mr-auto',
+                     [
+                         [u"Главная", '/'],
+                         [u"По популярности", '/popular/?page=1'],
+                         [u"Задать вопрос", '/ask/']
+                     ]
+                     ]
 
+        self.data_login = []
+        self.data_login.append(self.data)
+        self.data_login.append(['navbar-nav ml-auto',
+                                [
+                                    [u"Вход", '/login/'],
+                                    [u"Регистрация", '/signup/']]
+                                ])
 
+        self.data_logout = []
+        self.data_logout.append(self.data)
+        self.data_logout.append(['navbar-nav ml-auto',
+                    [[u"Выход", '/logout/']]
+                    ])
+        self.get_current()
+
+    def get_current(self):
+        self.current = self.data_logout if self.typenav else self.data_login
+    

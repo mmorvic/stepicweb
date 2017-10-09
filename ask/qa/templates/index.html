@@ -2,6 +2,20 @@
 {% block title %} {{ title }} {% endblock %}
 {% block jumbotitle %} Вопросы {% endblock %}
 {% block jumbotext %} Список вопросов {% endblock %}
+
+{% block navitems %}
+	{% include "navbar.html" %} 
+<!-- 		   
+		{% if  forloop.counter0  == navbar.active %}
+			<li class="nav-item active">
+		{% else %}
+					<li>
+				{% endif %}
+						<a class="nav-link {{ navitems.2 }}" href="{{ navitems.1 }}">{{ navitems.0 }}</a>
+					</li>
+ -->	
+{% endblock %}
+
 {% block content %}
 
 {% for question in questions %}
@@ -9,13 +23,15 @@
 	<div class="card">
 		<div class="card-body">
 		  <h4 class="card-title">
-		    {{ question }}
+		    {{ question.title }}
 		  </h4>
 		  <p class="card-text">{{ question.text }}</p>
 		  <a href="{{ question.get_url }}" class="btn btn-primary">подробнее</a>
-		  <span class="col-sm-4">date: {{ question.added_at }}</span>
-		  <span class="col-sm-4">rating: {{ question.rating }}</span>
-		  <span class="col-sm-4">likes: {{ question.likes.count }}</span>
+		  <span class="col-sm-4">Дата: {{ question.added_at|date:"d.m.Y" }}</span>
+		  <span class="col-sm-4">рейтинг: {{ question.rating }}</span>
+		  <span class="col-sm-4">лайки: {{ question.likes.count }}</span>
+		  <span class="col-sm-4">автор: {{ question.author }}</span>
+		  
 		</div>
 	</div>
 </div>

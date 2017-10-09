@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>SignUp</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block title %} {{ title }} {% endblock %}
+{% block jumbotitle %} Регистрация {% endblock %}
+{% block jumbotext %} Введите данные для регистрации {{ question.id }} {% endblock %}
+{% block navitems %}
+    {% include "navbar.html" %}
+{% endblock %}
+{% block content %}
+<div class="col-sm-12">
     <form method="post" action="/signup/">
         <fieldset>
-{% csrf_token %}
-{{ form.as_p }}
+        {% csrf_token %}
+        {{ form.as_p }}
         </fieldset>
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
     </form>
     <div>User: {{ user }}</div>
     <div>Session: {{ session }}</div>
-    <div><a href="/">Return to main page</a></div>
-</body>
-</html>
+</div>
+{% endblock %}

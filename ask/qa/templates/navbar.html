@@ -1,0 +1,21 @@
+	{% for ul in navbar.current %}
+		<ul class="{{ ul.0 }}">
+			{% for li in ul.1 %}
+				
+				{% if li.0 == navbar.active %}
+					<li class="nav-item active">
+				{% else %}
+					<li class="nav-item">
+				{% endif %}
+				
+					<a class="nav-link" href="{{ li.1 }}">{{ li.0 }}</a>
+				</li>
+			{% endfor %}
+
+			{% if navbar.typenav and forloop.last %}
+				<li class="nav-item">
+					<a class="nav-link text-danger" href="#">{{ user }}</a>
+				</li>
+			{% endif %}
+		</ul>
+	{% endfor %}

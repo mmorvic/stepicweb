@@ -108,4 +108,4 @@ USE_TZ = True
 #     '/home/victor/box/web/ask/static/',
 # )
 
-STATIC_URL = '/static/'
+STATIC_URL = '/'
